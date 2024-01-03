@@ -17,3 +17,11 @@ def get_executed_only(operation:list)->list:
     return operation_list
 
 
+def get_sort_operations(operation_list:list)->list:
+    """
+    Функция сортирует список по датам
+    """
+    sorted_items = sorted(operation_list, reverse=True, key=lambda x: x["date"])
+    return sorted_items
+
+
