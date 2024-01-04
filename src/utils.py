@@ -11,7 +11,7 @@ def get_all_operations(path):
     return content
 
 
-def get_executed_only(operation:list)->list:
+def get_executed_only(operation: list) -> list:
     """
     Функция создает новый список без всего лишнего
     """
@@ -19,7 +19,7 @@ def get_executed_only(operation:list)->list:
     return operation_list
 
 
-def get_sort_operations(operation_list:list)->list:
+def get_sort_operations(operation_list: list) -> list:
     """
     Функция сортирует список по датам
     """
@@ -27,7 +27,21 @@ def get_sort_operations(operation_list:list)->list:
     return sorted_items
 
 
-def get_formated_operation(operation):
+def hide_requisites(requisites: str):
+    """
+    Функция кодирует карту и счёт
+    """
+    parts = requisites.split()
+    number = parts[-1]
+    if requisites.lower().startswith('счет'):
+        hided_number = f"**{number[-4:]}"
+    else:
+        hided_number = f"{number[:4]} {number[4:6]}** **** {number[-4:]}"
+    parts[-1] = hided_number
+    return ' '.join(parts)
+
+
+def get_formated_operation(operation: dict) -> str:
     """
     Функция возвращает всю информацию по операциям
     """
@@ -47,3 +61,4 @@ def get_formated_operation(operation):
     line_three_output = f"{amount} {currency}"
 
     return f"{line_one_output}\n{line_two_output}\n{line_three_output}"
+

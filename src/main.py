@@ -1,6 +1,6 @@
 import os.path
 
-from src.utils import get_all_operations
+from src.utils import get_all_operations,get_executed_only,get_sort_operations,get_formated_operation
 from config import ROOT_DIR
 
 OPERATIONS_PATH = os.path.join(ROOT_DIR, 'src', 'operations.json')
