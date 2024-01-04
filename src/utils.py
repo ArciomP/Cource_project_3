@@ -1,4 +1,6 @@
 import json
+import datetime
+
 
 def get_all_operations(path):
     """
@@ -25,3 +27,23 @@ def get_sort_operations(operation_list:list)->list:
     return sorted_items
 
 
+def get_formated_operation(operation):
+    """
+    Функция возвращает всю информацию по операциям
+    """
+    formated_date = datetime.datetime.fromisoformat(operation['date']).strtime('%d.%m.%y')
+    type_operation = operation['description']
+    line_one_output = f"{formated_date} {type_operation}"
+
+    if operation.get('from'):
+        hided_from = hide_requisites(operation.get('from'))
+    else:
+        hided_from = 'Нет данных'
+    hided_to = hide_requisites(operation.get('to'))
+    line_two_output = f"{hided_from} -> {hided_to}"
+
+    amount = operation['operationAmount']['amount']
+    currency = operation['operationAmount']['currency']['name']
+    line_three_output = f"{amount} {currency}"
+
+    return f"{line_one_output}\n{line_two_output}\n{line_three_output}"
