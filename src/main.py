@@ -13,3 +13,6 @@ def main():
     for operation in five_last_operations:
         print(get_formated_operation(operation))
 
+
+if __name__ == "__main__":
+    main()
