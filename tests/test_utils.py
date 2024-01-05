@@ -1,6 +1,6 @@
 import os
 
-from src.utils import get_all_operations
+from src.utils import get_all_operations,get_executed_only,get_sort_operations,get_formated_operation
 from config import ROOT_DIR
 
 
@@ -54,7 +54,7 @@ def test_hide_requisites():
     assert hide_requisites(date_3_4) == result_3_4
 
 
-def test_get_formated_operations():
+def test_get_formated_operation():
     date_4_1 = {'id': 863064926, 'state': 'EXECUTED', 'date': '2019-12-08T22:46:21.935582',
                  'operationAmount': {'amount': '41096.24', 'currency': {'name': 'USD', 'code': 'USD'}},
                  'description': 'Открытие вклада', 'to': 'Счет 90424923579946435907'}
@@ -67,5 +67,5 @@ def test_get_formated_operations():
     result_4_2 = "07.12.19 Перевод организации\n"\
                  "Visa Classic 2842 87 ** **** 9012 -->  Счет **3655\n"\
                  "48150.39 USD\n"
-    assert get_formated_operations(date_4_1) == result_4_1
-    assert get_formated_operations(date_4_2) == result_4_2
+    assert get_formated_operation(date_4_1) == result_4_1
+    assert get_formated_operation(date_4_2) == result_4_2
